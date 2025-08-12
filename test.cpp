@@ -99,37 +99,165 @@ using namespace std;
 //	return 0;
 //}
 
+//class Person
+//{
+////protected:
+//public:
+//	string _name = "张三"; // 姓名
+//	string _sex; // 性别
+//	int _age; // 年龄
+//};
+//
+//class Student : public Person
+//{
+//public:
+//	int _Num; // 学号
+//};
+//
+//int main()
+//{
+//	int a = 1;
+//	const double& d = a;
+//
+//	string s1 = "11111";
+//	const string& s2 = "11111";
+//
+//	Student sobj;
+//	// 1.派生类对象可以赋值给基类的指针/引用
+//	Person* pp = &sobj;
+//	Person& rp = sobj;
+//	rp._name = "李四";
+//
+//	// 生类对象可以赋值给基类的对象是通过调用后面会讲解的基类的拷贝构造完成的
+//	Person pobj = sobj;
+//
+//	return 0;
+//}
+ 
+
+
+//class Person
+//{
+//protected:
+//	string _name = "小李子"; // 姓名
+//	int _num = 111; // 身份证号
+//};
+//
+//class Student : public Person
+//{
+//public:
+//	void Print()
+//	{
+//		cout << " 姓名:" << _name << endl;
+//		cout <<" 学号:"<< _num << endl;//优先访问子类
+//		cout <<" 身份证号:"<< Person::_num << endl;
+//	}
+//protected:
+//	int _num = 999; // 学号
+//};
+//
+//int main()
+//{
+//	Student s1;
+//	s1.Print();
+//
+//	return 0;
+//};
+
+
+
 class Person
 {
-//protected:
 public:
-	string _name = "张三"; // 姓名
-	string _sex; // 性别
-	int _age; // 年龄
+	Person(const char* name)
+		: _name(name)
+	{
+		cout << "Person()" << endl;
+	}
+
+	Person(const Person& p)
+		: _name(p._name)
+	{
+		cout << "Person(const Person& p)" << endl;
+	}
+
+	Person& operator=(const Person& p)
+	{
+		cout << "Person operator=(const Person& p)" << endl;
+		if (this != &p)
+			_name = p._name;
+		
+		return *this;
+	}
+
+	~Person()
+	{
+		cout << "~Person()" << endl;
+	}
+	protected:
+	string _name; // 姓名
 };
 
 class Student : public Person
 {
+	 //默认成员函数 - 规则高度相似
+	 //两份部分分开处理：
+	 //1、基类成员(整体，调用基类构造)
+	 //2、派生类成员（跟类和对象一样）
 public:
-	int _Num; // 学号
+	Student(const char* name, int num, const char* address)
+		: Person(name)
+		,_num(num)
+		,_address(address)
+	{
+		// 一般都要自己写
+	}
+	
+	Student(const Student& s)
+		:Person(s)
+		,_num(s._num)
+		,_address(s._address)
+	{
+		// 编译默认生成的就够用了
+		// 存在深拷贝时，才自己写
+	}
+
+	Student& operator=(const Student& s)
+	{
+		// 编译默认生成的就够用了
+		// 存在深拷贝时，才自己写
+
+		if (this != &s)
+		{
+			Person::operator=(s);
+			_num = s._num;
+			_address = s._address;
+		}
+
+		return *this;
+	}
+
+	// 析构函数名字因为后续多态(重写)章节原因，会被处理成destructor
+	// 所以派生类和基类析构构成隐藏关系
+	~Student()
+	{
+		// Person::~Person();
+	} // 自动调用父类析构, 才能保证先子后父的析构顺序
+
+	// 派生类析构调用后，会自动调用父类析构，所以自己实现析构时不需要显示调用
+	// 构造初始化，先父类后子。析构清理资源，先子后父。
+protected:
+	int _num; //学号
+	string _address;
 };
 
 int main()
 {
-	int a = 1;
-	const double& d = a;
+	Student s1("张三", 1, "西安曲江");
+	Student s2(s1);
 
-	string s1 = "11111";
-	const string& s2 = "11111";
-
-	Student sobj;
-	// 1.派生类对象可以赋值给基类的指针/引用
-	Person* pp = &sobj;
-	Person& rp = sobj;
-	rp._name = "李四";
-
-	// 生类对象可以赋值给基类的对象是通过调用后面会讲解的基类的拷贝构造完成的
-	Person pobj = sobj;
+	/*Student s3("李四", 2, "西安高新");
+	s1 = s3;*/
 
 	return 0;
 }
