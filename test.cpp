@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 #include<iostream>
 #include<vector>
 using namespace std;
@@ -29,7 +29,7 @@ using namespace std;
 //
 //
 //protected:
-//	int _stuid;//Ñ§ºÅ
+//	int _stuid;//å­¦å·
 //};
 //class Teacher :public Person
 //{
@@ -53,17 +53,17 @@ using namespace std;
 //		//template<class T>
 //	//class vector
 //	//{};
-//	// stackºÍvectorµÄ¹ØÏµ£¬¼È·ûºÏis-a£¬Ò²·ûºÏhas-a
+//	// stackå’Œvectorçš„å…³ç³»ï¼Œæ—¢ç¬¦åˆis-aï¼Œä¹Ÿç¬¦åˆhas-a
 //	template<class T>
 //	class stack : public vector<T>
 //	{
 //	public:
 //		void push(const T& x)
 //		{
-//			// »ùÀàÊÇÀàÄ£°åÊ±£¬ĞèÒªÖ¸¶¨Ò»ÏÂÀàÓò£¬
-//			// ·ñÔò±àÒë±¨´í:error C3861: ¡°push_back¡±: ÕÒ²»µ½±êÊ¶·û
-//			// ÒòÎªstack<int>ÊµÀı»¯Ê±£¬Ò²ÊµÀı»¯vector<int>ÁË
-//			// µ«ÊÇÄ£°æÊÇ°´ĞèÊµÀı»¯£¬push_backµÈ³ÉÔ±º¯ÊıÎ´ÊµÀı»¯£¬ËùÒÔÕÒ²»µ½
+//			// åŸºç±»æ˜¯ç±»æ¨¡æ¿æ—¶ï¼Œéœ€è¦æŒ‡å®šä¸€ä¸‹ç±»åŸŸï¼Œ
+//			// å¦åˆ™ç¼–è¯‘æŠ¥é”™:error C3861: â€œpush_backâ€: æ‰¾ä¸åˆ°æ ‡è¯†ç¬¦
+//			// å› ä¸ºstack<int>å®ä¾‹åŒ–æ—¶ï¼Œä¹Ÿå®ä¾‹åŒ–vector<int>äº†
+//			// ä½†æ˜¯æ¨¡ç‰ˆæ˜¯æŒ‰éœ€å®ä¾‹åŒ–ï¼Œpush_backç­‰æˆå‘˜å‡½æ•°æœªå®ä¾‹åŒ–ï¼Œæ‰€ä»¥æ‰¾ä¸åˆ°
 //			vector<T>::push_back(x);
 //			//push_back(x);
 //		}
@@ -99,41 +99,41 @@ using namespace std;
 //	return 0;
 //}
 
-class Person
-{
-//protected:
-public:
-	string _name = "ÕÅÈı"; // ĞÕÃû
-	string _sex; // ĞÔ±ğ
-	int _age; // ÄêÁä
-	void printP()
-	{
-		cout << this->_name << endl;
-		cout << this->_sex << endl;
-		cout << this->_age << endl;
-	}
-};
-
-class Student : public Person
-{
-public:
-	int _Num; // Ñ§ºÅ
-	void printS()
-	{
-		printP();
-		cout << this->_Num << endl;
-	}
-};
-
-int main()
-{
-	Person p;
-	Student s;
-	//cout << s._name << endl;
-	//cout << s._Num << endl;
-	//cout << p._Num << endl;
-	s.printS();
-}
+//class Person
+//{
+////protected:
+//public:
+//	string _name = "å¼ ä¸‰"; // å§“å
+//	string _sex; // æ€§åˆ«
+//	int _age; // å¹´é¾„
+//	void printP()
+//	{
+//		cout << this->_name << endl;
+//		cout << this->_sex << endl;
+//		cout << this->_age << endl;
+//	}
+//};
+//
+//class Student : public Person
+//{
+//public:
+//	int _Num; // å­¦å·
+//	void printS()
+//	{
+//		printP();
+//		cout << this->_Num << endl;
+//	}
+//};
+//
+//int main()
+//{
+//	Person p;
+//	Student s;
+//	//cout << s._name << endl;
+//	//cout << s._Num << endl;
+//	//cout << p._Num << endl;
+//	s.printS();
+//}
 //int main()
 //{
 //	int a = 1;
@@ -143,24 +143,24 @@ int main()
 //	const string& s2 = "11111";
 //
 //	Student sobj;
-////	 1.ÅÉÉúÀà¶ÔÏó¿ÉÒÔ¸³Öµ¸ø»ùÀàµÄÖ¸Õë/ÒıÓÃ
+////	 1.æ´¾ç”Ÿç±»å¯¹è±¡å¯ä»¥èµ‹å€¼ç»™åŸºç±»çš„æŒ‡é’ˆ/å¼•ç”¨
 ////	Person* pp = &sobj;
 ////	Person& rp = sobj;
-////	rp._name = "ÀîËÄ";
+////	rp._name = "æå››";
 ////
-////	 ÉúÀà¶ÔÏó¿ÉÒÔ¸³Öµ¸ø»ùÀàµÄ¶ÔÏóÊÇÍ¨¹ıµ÷ÓÃºóÃæ»á½²½âµÄ»ùÀàµÄ¿½±´¹¹ÔìÍê³ÉµÄ
+////	 ç”Ÿç±»å¯¹è±¡å¯ä»¥èµ‹å€¼ç»™åŸºç±»çš„å¯¹è±¡æ˜¯é€šè¿‡è°ƒç”¨åé¢ä¼šè®²è§£çš„åŸºç±»çš„æ‹·è´æ„é€ å®Œæˆçš„
 //	Person pobj = sobj;
 //
 //	return 0;
 //}
- 
+// 
 
 
 //class Person
 //{
 //protected:
-//	string _name = "Ğ¡Àî×Ó"; // ĞÕÃû
-//	int _num = 111; // Éí·İÖ¤ºÅ
+//	string _name = "å°æå­"; // å§“å
+//	int _num = 111; // èº«ä»½è¯å·
 //};
 //
 //class Student : public Person
@@ -168,12 +168,12 @@ int main()
 //public:
 //	void Print()
 //	{
-//		cout << " ĞÕÃû:" << _name << endl;
-//		cout <<" Ñ§ºÅ:"<< _num << endl;//ÓÅÏÈ·ÃÎÊ×ÓÀà
-//		cout <<" Éí·İÖ¤ºÅ:"<< Person::_num << endl;
+//		cout << " å§“å:" << _name << endl;
+//		cout <<" å­¦å·:"<< _num << endl;//ä¼˜å…ˆè®¿é—®å­ç±»
+//		cout <<" èº«ä»½è¯å·:"<< Person::_num << endl;
 //	}
 //protected:
-//	int _num = 999; // Ñ§ºÅ
+//	int _num = 999; // å­¦å·
 //};
 //
 //int main()
@@ -215,22 +215,22 @@ int main()
 //		cout << "~Person()" << endl;
 //	}
 //	protected:
-//	string _name; // ĞÕÃû
+//	string _name; // å§“å
 //};
 //
 //class Student : public Person
 //{
-//	 Ä¬ÈÏ³ÉÔ±º¯Êı - ¹æÔò¸ß¶ÈÏàËÆ
-//	 Á½·İ²¿·Ö·Ö¿ª´¦Àí£º
-//	 1¡¢»ùÀà³ÉÔ±(ÕûÌå£¬µ÷ÓÃ»ùÀà¹¹Ôì)
-//	 2¡¢ÅÉÉúÀà³ÉÔ±£¨¸úÀàºÍ¶ÔÏóÒ»Ñù£©
+//	 é»˜è®¤æˆå‘˜å‡½æ•° - è§„åˆ™é«˜åº¦ç›¸ä¼¼
+//	 ä¸¤ä»½éƒ¨åˆ†åˆ†å¼€å¤„ç†ï¼š
+//	 1ã€åŸºç±»æˆå‘˜(æ•´ä½“ï¼Œè°ƒç”¨åŸºç±»æ„é€ )
+//	 2ã€æ´¾ç”Ÿç±»æˆå‘˜ï¼ˆè·Ÿç±»å’Œå¯¹è±¡ä¸€æ ·ï¼‰
 //public:
 //	Student(const char* name, int num, const char* address)
 //		: Person(name)
 //		,_num(num)
 //		,_address(address)
 //	{
-//		 Ò»°ã¶¼Òª×Ô¼ºĞ´
+//		 ä¸€èˆ¬éƒ½è¦è‡ªå·±å†™
 //	}
 //	
 //	Student(const Student& s)
@@ -238,14 +238,14 @@ int main()
 //		,_num(s._num)
 //		,_address(s._address)
 //	{
-//		 ±àÒëÄ¬ÈÏÉú³ÉµÄ¾Í¹»ÓÃÁË
-//		 ´æÔÚÉî¿½±´Ê±£¬²Å×Ô¼ºĞ´
+//		 ç¼–è¯‘é»˜è®¤ç”Ÿæˆçš„å°±å¤Ÿç”¨äº†
+//		 å­˜åœ¨æ·±æ‹·è´æ—¶ï¼Œæ‰è‡ªå·±å†™
 //	}
 //
 //	Student& operator=(const Student& s)
 //	{
-//		 ±àÒëÄ¬ÈÏÉú³ÉµÄ¾Í¹»ÓÃÁË
-//		 ´æÔÚÉî¿½±´Ê±£¬²Å×Ô¼ºĞ´
+//		 ç¼–è¯‘é»˜è®¤ç”Ÿæˆçš„å°±å¤Ÿç”¨äº†
+//		 å­˜åœ¨æ·±æ‹·è´æ—¶ï¼Œæ‰è‡ªå·±å†™
 //
 //		if (this != &s)
 //		{
@@ -257,27 +257,96 @@ int main()
 //		return *this;
 //	}
 //
-//	 Îö¹¹º¯ÊıÃû×ÖÒòÎªºóĞø¶àÌ¬(ÖØĞ´)ÕÂ½ÚÔ­Òò£¬»á±»´¦Àí³Édestructor
-//	 ËùÒÔÅÉÉúÀàºÍ»ùÀàÎö¹¹¹¹³ÉÒş²Ø¹ØÏµ
+//	 ææ„å‡½æ•°åå­—å› ä¸ºåç»­å¤šæ€(é‡å†™)ç« èŠ‚åŸå› ï¼Œä¼šè¢«å¤„ç†æˆdestructor
+//	 æ‰€ä»¥æ´¾ç”Ÿç±»å’ŒåŸºç±»ææ„æ„æˆéšè—å…³ç³»
 //	~Student()
 //	{
 //		 Person::~Person();
-//	} // ×Ô¶¯µ÷ÓÃ¸¸ÀàÎö¹¹, ²ÅÄÜ±£Ö¤ÏÈ×Óºó¸¸µÄÎö¹¹Ë³Ğò
+//	} // è‡ªåŠ¨è°ƒç”¨çˆ¶ç±»ææ„, æ‰èƒ½ä¿è¯å…ˆå­åçˆ¶çš„ææ„é¡ºåº
 //
-//	 ÅÉÉúÀàÎö¹¹µ÷ÓÃºó£¬»á×Ô¶¯µ÷ÓÃ¸¸ÀàÎö¹¹£¬ËùÒÔ×Ô¼ºÊµÏÖÎö¹¹Ê±²»ĞèÒªÏÔÊ¾µ÷ÓÃ
-//	 ¹¹Ôì³õÊ¼»¯£¬ÏÈ¸¸Ààºó×Ó¡£Îö¹¹ÇåÀí×ÊÔ´£¬ÏÈ×Óºó¸¸¡£
+//	 æ´¾ç”Ÿç±»ææ„è°ƒç”¨åï¼Œä¼šè‡ªåŠ¨è°ƒç”¨çˆ¶ç±»ææ„ï¼Œæ‰€ä»¥è‡ªå·±å®ç°ææ„æ—¶ä¸éœ€è¦æ˜¾ç¤ºè°ƒç”¨
+//	 æ„é€ åˆå§‹åŒ–ï¼Œå…ˆçˆ¶ç±»åå­ã€‚ææ„æ¸…ç†èµ„æºï¼Œå…ˆå­åçˆ¶ã€‚
 //protected:
-//	int _num; //Ñ§ºÅ
+//	int _num; //å­¦å·
 //	string _address;
 //};
 //
 //int main()
 //{
-//	Student s1("ÕÅÈı", 1, "Î÷°²Çú½­");
+//	Student s1("å¼ ä¸‰", 1, "è¥¿å®‰æ›²æ±Ÿ");
 //	Student s2(s1);
 //
-//	/*Student s3("ÀîËÄ", 2, "Î÷°²¸ßĞÂ");
+//	/*Student s3("æå››", 2, "è¥¿å®‰é«˜æ–°");
 //	s1 = s3;*/
 //
 //	return 0;
 //}
+//namespace yiming
+//{
+//	
+//	template<class T>
+//	class stack : public std::vector<T>
+//	{
+//	public:
+//		void push(const T& x)
+//		{
+//			// åŸºç±»æ˜¯ç±»æ¨¡æ¿æ—¶ï¼Œéœ€è¦æŒ‡å®šâ¼€ä¸‹ç±»åŸŸï¼Œ 
+//// å› ä¸ºstack<int>å®ä¾‹åŒ–æ—¶ï¼Œä¹Ÿå®ä¾‹åŒ–vector<int>äº† 
+// // ä½†æ˜¯æ¨¡ç‰ˆæ˜¯æŒ‰éœ€å®ä¾‹åŒ–ï¼Œpush_backç­‰æˆå‘˜å‡½æ•°æœªå®ä¾‹åŒ–ï¼Œæ‰€ä»¥æ‰¾ä¸åˆ° 
+//			vector<T>::push_back(x);
+//			/*push_back(x);*/
+//		}
+//		void pop()
+//		{
+//			vector<T>::pop_back();
+//		}
+//		const T& top()
+//		{
+//			return vector<T>::back();
+//		}
+//		bool empty()
+//		{
+//			return vector<T>::empty();
+//		}
+//	};
+//}
+//int main()
+//{
+//	yiming::stack<int> st;
+//	st.push(1);
+//	st.push(2);
+//	st.push(3);
+//	while (!st.empty())
+//	{
+//		cout << st.top() << " ";
+//		st.pop();
+//	}
+//	return 0;
+//}
+class Person
+{
+protected:
+	string _name; // å§“å 
+	string _sex; // æ€§åˆ« 
+	int _age; // å¹´é¾„ 
+};
+class Student : public Person
+{
+public:
+	int _No; // å­¦å· 
+};
+int main()
+{
+	Student sobj;
+	// 1.æ´¾â½£ç±»å¯¹è±¡å¯ä»¥èµ‹å€¼ç»™åŸºç±»çš„æŒ‡é’ˆ/å¼•â½¤ 
+	Person* pp = &sobj;
+	Person& rp = sobj;
+
+	// â½£ç±»å¯¹è±¡å¯ä»¥èµ‹å€¼ç»™åŸºç±»çš„å¯¹è±¡æ˜¯é€šè¿‡è°ƒâ½¤åâ¾¯ä¼šè®²è§£çš„åŸºç±»çš„æ‹·â»‰æ„é€ å®Œæˆçš„ 
+	Person pobj = sobj;
+
+	//2.åŸºç±»å¯¹è±¡ä¸èƒ½èµ‹å€¼ç»™æ´¾â½£ç±»å¯¹è±¡ï¼Œè¿™â¾¥ä¼šç¼–è¯‘æŠ¥é”™ 
+	sobj = pobj;
+
+	return 0;
+}
