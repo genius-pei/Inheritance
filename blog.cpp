@@ -1,20 +1,20 @@
-#define _CRT_SECURE_NO_WARNINGS
+ï»¿#define _CRT_SECURE_NO_WARNINGS
 #include<iostream>
 using namespace std;
 
-//// »ùÀà
+//// åŸºç±»
 //class Base {
 //public:
-//    // »ùÀàµÄÄ¬ÈÏ¹¹Ôìº¯Êı
+//    // åŸºç±»çš„é»˜è®¤æ„é€ å‡½æ•°
 //    Base() {
 //        cout << "Base default constructor called" << std::endl;
 //    }
 //};
 //
-//// ÅÉÉúÀà
+//// æ´¾ç”Ÿç±»
 //class Derived : public Base {
 //public:
-//    // ÅÉÉúÀàµÄ¹¹Ôìº¯Êı
+//    // æ´¾ç”Ÿç±»çš„æ„é€ å‡½æ•°
 //    Derived() {
 //       cout << "Derived constructor called" << std::endl;
 //    }
@@ -26,19 +26,19 @@ using namespace std;
 //}
 
 //
-//// »ùÀà
+//// åŸºç±»
 //class Base {
 //public:
-//    // »ùÀàµÄ¹¹Ôìº¯Êı£¬ĞèÒªÒ»¸ö²ÎÊı
+//    // åŸºç±»çš„æ„é€ å‡½æ•°ï¼Œéœ€è¦ä¸€ä¸ªå‚æ•°
 //    Base(int value) {
 //        cout << "Base constructor called with value: " << value << std::endl;
 //    }
 //};
 //
-//// ÅÉÉúÀà
+//// æ´¾ç”Ÿç±»
 //class Derived : public Base {
 //public:
-//    // ÅÉÉúÀàµÄ¹¹Ôìº¯Êı£¬ÔÚ³õÊ¼»¯ÁĞ±íÖĞÏÔÊ½µ÷ÓÃ»ùÀàµÄ¹¹Ôìº¯Êı
+//    // æ´¾ç”Ÿç±»çš„æ„é€ å‡½æ•°ï¼Œåœ¨åˆå§‹åŒ–åˆ—è¡¨ä¸­æ˜¾å¼è°ƒç”¨åŸºç±»çš„æ„é€ å‡½æ•°
 //    Derived(int value)  {
 //      cout << "Derived constructor called" << std::endl;
 //    }
@@ -50,78 +50,107 @@ using namespace std;
 //}
 
 
-// »ùÀà
-class Base {
-private:
-    int baseData;
+//// åŸºç±»
+//class Base {
+//private:
+//    int baseData;
+//public:
+//    // åŸºç±»æ„é€ å‡½æ•°
+//    Base(int data = 0) : baseData(data) {
+//        std::cout << "Base æ„é€ å‡½æ•°è¢«è°ƒç”¨ï¼ŒbaseData = " << baseData << std::endl;
+//    }
+//
+//    // åŸºç±»æ‹·è´æ„é€ å‡½æ•°
+//    Base(const Base& other) : baseData(other.baseData) {
+//        std::cout << "Base æ‹·è´æ„é€ å‡½æ•°è¢«è°ƒç”¨ï¼ŒbaseData = " << baseData << std::endl;
+//    }
+//
+//    // åŸºç±»èµ‹å€¼è¿ç®—ç¬¦é‡è½½
+//    Base& operator=(const Base& other) {
+//        if (this != &other) {
+//            baseData = other.baseData;
+//        }
+//        std::cout << "Base operator= è¢«è°ƒç”¨ï¼ŒbaseData = " << baseData << std::endl;
+//        return *this;
+//    }
+//
+//    // åŸºç±»ææ„å‡½æ•°
+//    ~Base() {
+//        std::cout << "Base ææ„å‡½æ•°è¢«è°ƒç”¨ï¼ŒbaseData = " << baseData << std::endl;
+//    }
+//};
+//
+//// æ´¾ç”Ÿç±»
+//class Derived : public Base {
+//private:
+//    int derivedData;
+//public:
+//    // æ´¾ç”Ÿç±»æ„é€ å‡½æ•°
+//    Derived(int baseData, int derivedData) : Base(baseData), derivedData(derivedData) {
+//        std::cout << "Derived æ„é€ å‡½æ•°è¢«è°ƒç”¨ï¼ŒderivedData = " << derivedData << std::endl;
+//    }
+//
+//    // æ´¾ç”Ÿç±»æ‹·è´æ„é€ å‡½æ•°
+//    Derived(const Derived& other) : Base(other), derivedData(other.derivedData) {
+//        std::cout << "Derived æ‹·è´æ„é€ å‡½æ•°è¢«è°ƒç”¨ï¼ŒderivedData = " << derivedData << std::endl;
+//    }
+//
+//    // æ´¾ç”Ÿç±»èµ‹å€¼è¿ç®—ç¬¦é‡è½½
+//    Derived& operator=(const Derived& other) {
+//        if (this != &other) {
+//            // æ˜¾å¼è°ƒç”¨åŸºç±»çš„ operator=
+//            Base::operator=(other);
+//            derivedData = other.derivedData;
+//        }
+//        std::cout << "Derived operator= è¢«è°ƒç”¨ï¼ŒderivedData = " << derivedData << std::endl;
+//        return *this;
+//    }
+//
+//    // æ´¾ç”Ÿç±»ææ„å‡½æ•°
+//    ~Derived() {
+//        std::cout << "Derived ææ„å‡½æ•°è¢«è°ƒç”¨ï¼ŒderivedData = " << derivedData << std::endl;
+//    }
+//};
+//
+//int main() {
+//    // æ´¾ç”Ÿç±»å¯¹è±¡åˆå§‹åŒ–ï¼Œå…ˆè°ƒç”¨åŸºç±»æ„é€ å†è°ƒç”¨æ´¾ç”Ÿç±»æ„é€ 
+//    Derived d1(10, 20);
+//
+//    // æ´¾ç”Ÿç±»æ‹·è´æ„é€ å‡½æ•°è°ƒç”¨åŸºç±»æ‹·è´æ„é€ å‡½æ•°
+//    Derived d2(d1);
+//
+//    // æ´¾ç”Ÿç±» operator= è°ƒç”¨åŸºç±» operator=
+//    Derived d3(30, 40);
+//    d3 = d1;
+//
+//    return 0;
+//}
+class Student;
+class Person
+{
 public:
-    // »ùÀà¹¹Ôìº¯Êı
-    Base(int data = 0) : baseData(data) {
-        std::cout << "Base ¹¹Ôìº¯Êı±»µ÷ÓÃ£¬baseData = " << baseData << std::endl;
-    }
-
-    // »ùÀà¿½±´¹¹Ôìº¯Êı
-    Base(const Base& other) : baseData(other.baseData) {
-        std::cout << "Base ¿½±´¹¹Ôìº¯Êı±»µ÷ÓÃ£¬baseData = " << baseData << std::endl;
-    }
-
-    // »ùÀà¸³ÖµÔËËã·ûÖØÔØ
-    Base& operator=(const Base& other) {
-        if (this != &other) {
-            baseData = other.baseData;
-        }
-        std::cout << "Base operator= ±»µ÷ÓÃ£¬baseData = " << baseData << std::endl;
-        return *this;
-    }
-
-    // »ùÀàÎö¹¹º¯Êı
-    ~Base() {
-        std::cout << "Base Îö¹¹º¯Êı±»µ÷ÓÃ£¬baseData = " << baseData << std::endl;
-    }
+	friend void Display(const Person& p, const Student& s);
+protected:
+	string _name="yiming"; // å§“å 
 };
-
-// ÅÉÉúÀà
-class Derived : public Base {
-private:
-    int derivedData;
-public:
-    // ÅÉÉúÀà¹¹Ôìº¯Êı
-    Derived(int baseData, int derivedData) : Base(baseData), derivedData(derivedData) {
-        std::cout << "Derived ¹¹Ôìº¯Êı±»µ÷ÓÃ£¬derivedData = " << derivedData << std::endl;
-    }
-
-    // ÅÉÉúÀà¿½±´¹¹Ôìº¯Êı
-    Derived(const Derived& other) : Base(other), derivedData(other.derivedData) {
-        std::cout << "Derived ¿½±´¹¹Ôìº¯Êı±»µ÷ÓÃ£¬derivedData = " << derivedData << std::endl;
-    }
-
-    // ÅÉÉúÀà¸³ÖµÔËËã·ûÖØÔØ
-    Derived& operator=(const Derived& other) {
-        if (this != &other) {
-            // ÏÔÊ½µ÷ÓÃ»ùÀàµÄ operator=
-            Base::operator=(other);
-            derivedData = other.derivedData;
-        }
-        std::cout << "Derived operator= ±»µ÷ÓÃ£¬derivedData = " << derivedData << std::endl;
-        return *this;
-    }
-
-    // ÅÉÉúÀàÎö¹¹º¯Êı
-    ~Derived() {
-        std::cout << "Derived Îö¹¹º¯Êı±»µ÷ÓÃ£¬derivedData = " << derivedData << std::endl;
-    }
+class Student : public Person
+{
+	friend void Display(const Person& p, const Student& s);
+protected:
+	int _stuNum=1117; // å­¦å· 
 };
+void Display(const Person& p, const Student& s)
+{
+	cout << p._name << endl;
+	cout << s._stuNum << endl;
+}
+int main()
+{
+	Person p;
+    Student s;
+	// ç¼–è¯‘æŠ¥é”™ï¼šerror C2248: â€œStudent::_stuNumâ€: â½†æ³•è®¿é—® protected æˆå‘˜ 
+	// è§£å†³â½…æ¡ˆï¼šDisplayä¹Ÿå˜æˆStudent çš„å‹å…ƒå³å¯ 
+	Display(p, s);
 
-int main() {
-    // ÅÉÉúÀà¶ÔÏó³õÊ¼»¯£¬ÏÈµ÷ÓÃ»ùÀà¹¹ÔìÔÙµ÷ÓÃÅÉÉúÀà¹¹Ôì
-    Derived d1(10, 20);
-
-    // ÅÉÉúÀà¿½±´¹¹Ôìº¯Êıµ÷ÓÃ»ùÀà¿½±´¹¹Ôìº¯Êı
-    Derived d2(d1);
-
-    // ÅÉÉúÀà operator= µ÷ÓÃ»ùÀà operator=
-    Derived d3(30, 40);
-    d3 = d1;
-
-    return 0;
+	return 0;
 }
