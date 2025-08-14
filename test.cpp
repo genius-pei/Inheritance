@@ -156,33 +156,39 @@ using namespace std;
 // 
 
 
-//class Person
-//{
-//protected:
-//	string _name = "小李子"; // 姓名
-//	int _num = 111; // 身份证号
-//};
-//
-//class Student : public Person
-//{
-//public:
-//	void Print()
-//	{
-//		cout << " 姓名:" << _name << endl;
-//		cout <<" 学号:"<< _num << endl;//优先访问子类
-//		cout <<" 身份证号:"<< Person::_num << endl;
-//	}
-//protected:
-//	int _num = 999; // 学号
-//};
-//
-//int main()
-//{
-//	Student s1;
-//	s1.Print();
-//
-//	return 0;
-//};
+class Person
+{
+public:
+	string _name = "小李子"; // 姓名
+	int _num = 111; // 身份证号
+	void Print()
+	{
+		cout << " 姓名:" << _name << endl;
+		cout << " 身份证号:" << _num << endl;
+	}
+};
+
+class Student : public Person
+{
+public:
+	void Print()
+	{
+		cout << " 姓名:" << _name << endl;
+		cout <<" 学号:"<< _num << endl;//优先访问子类
+		cout <<" 身份证号:"<< Person::_num << endl;
+	}
+protected:
+	int _num = 999; // 学号
+};
+
+int main()
+{
+	Student s1;
+	s1.Print();
+	s1.Person::Print();
+
+	return 0;
+};
 
 
 
@@ -323,30 +329,30 @@ using namespace std;
 //	}
 //	return 0;
 //}
-class Person
-{
-protected:
-	string _name; // 姓名 
-	string _sex; // 性别 
-	int _age; // 年龄 
-};
-class Student : public Person
-{
-public:
-	int _No; // 学号 
-};
-int main()
-{
-	Student sobj;
-	// 1.派⽣类对象可以赋值给基类的指针/引⽤ 
-	Person* pp = &sobj;
-	Person& rp = sobj;
-
-	// ⽣类对象可以赋值给基类的对象是通过调⽤后⾯会讲解的基类的拷⻉构造完成的 
-	Person pobj = sobj;
-
-	//2.基类对象不能赋值给派⽣类对象，这⾥会编译报错 
-	sobj = pobj;
-
-	return 0;
-}
+//class Person
+//{
+//protected:
+//	string _name; // 姓名 
+//	string _sex; // 性别 
+//	int _age; // 年龄 
+//};
+//class Student : public Person
+//{
+//public:
+//	int _No; // 学号 
+//};
+//int main()
+//{
+//	Student sobj;
+//	// 1.派⽣类对象可以赋值给基类的指针/引⽤ 
+//	Person* pp = &sobj;
+//	Person& rp = sobj;
+//
+//	// ⽣类对象可以赋值给基类的对象是通过调⽤后⾯会讲解的基类的拷⻉构造完成的 
+//	Person pobj = sobj;
+//
+//	//2.基类对象不能赋值给派⽣类对象，这⾥会编译报错 
+//	sobj = pobj;
+//
+//	return 0;
+//}
