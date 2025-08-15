@@ -186,7 +186,7 @@ using namespace std;
 //    cout << Student::_count << endl;
 //	return 0;
 //}
-//
+
 
 ////多继承
 //class Person
@@ -221,37 +221,148 @@ using namespace std;
 //}
 
 
-//虚继承
+////虚继承
+//
+//class Person
+//{
+//public:
+//	string _name; // 姓名 
+//	
+//};
+//// 使⽤虚继承Person类 
+//class Student : virtual public Person
+//{
+//protected:
+//	int _num; //学号 
+//};
+//// 使⽤虚继承Person类 
+//class Teacher : virtual public Person
+//{
+//protected:
+//	int _id; // 职⼯编号 
+//};
+//// 教授助理 
+//class Assistant : public Student, public Teacher
+//{
+//protected:
+//	string _majorCourse; // 主修课程 
+//};
+//int main()
+//{
+//	// 使⽤虚继承，可以解决数据冗余和⼆义性 
+//	Assistant a;
+//	a._name = "peter";
+//	cout << a._name << endl;
+//	return 0;
+//}
 
-class Person
-{
+
+// 基类：服装
+class Clothing {
 public:
-	string _name; // 姓名 
-	
+    // 设置服装的材质
+    void setMaterial(const std::string& material) {
+        this->material = material;
+    }
+
+    // 设置服装的颜色
+    void setColor(const std::string& color) {
+        this->color = color;
+    }
+
+    // 展示服装信息
+    void displayInfo() const {
+        std::cout << "材质: " << material << ", 颜色: " << color;
+    }
+
+private:
+    std::string material;
+    std::string color;
 };
-// 使⽤虚继承Person类 
-class Student : virtual public Person
-{
-protected:
-	int _num; //学号 
+
+// 派生类：T恤，继承自 Clothing
+class TShirt : public Clothing {
+public:
+    // 设置T恤的图案
+    void setPattern(const std::string& pattern) {
+        this->pattern = pattern;
+    }
+
+    // 重写展示信息的函数，加入图案信息
+    void displayInfo() const {
+        Clothing::displayInfo();
+        std::cout << ", 图案: " << pattern << std::endl;
+    }
+
+private:
+    std::string pattern;
 };
-// 使⽤虚继承Person类 
-class Teacher : virtual public Person
-{
-protected:
-	int _id; // 职⼯编号 
+
+// 类：裤子
+class Pants {
+public:
+    // 设置裤子的款式
+    void setStyle(const std::string& style) {
+        this->style = style;
+    }
+
+    // 设置裤子的长度
+    void setLength(const std::string& length) {
+        this->length = length;
+    }
+
+    // 展示裤子信息
+    void displayInfo() const {
+        std::cout << "款式: " << style << ", 长度: " << length << std::endl;
+    }
+
+private:
+    std::string style;
+    std::string length;
 };
-// 教授助理 
-class Assistant : public Student, public Teacher
-{
-protected:
-	string _majorCourse; // 主修课程 
+
+// 类：穿搭，通过组合 TShirt 和 Pants
+class Outfit {
+public:
+    // 获取 T 恤对象
+    TShirt& getTShirt() {
+        return tShirt;
+    }
+
+    // 获取裤子对象
+    Pants& getPants() {
+        return pants;
+    }
+
+    // 展示整套穿搭信息
+    void displayOutfitInfo() const {
+        std::cout << "整套穿搭信息：" << std::endl;
+        std::cout << "上衣：";
+        tShirt.displayInfo();
+        std::cout << "裤子：";
+        pants.displayInfo();
+    }
+
+private:
+    TShirt tShirt;
+    Pants pants;
 };
-int main()
-{
-	// 使⽤虚继承，可以解决数据冗余和⼆义性 
-	Assistant a;
-	a._name = "peter";
-	cout << a._name << endl;
-	return 0;
+
+
+int main() {
+    Outfit outfit;
+
+    // 设置 T 恤信息
+    outfit.getTShirt().setMaterial("棉质");
+    outfit.getTShirt().setColor("白色");
+    outfit.getTShirt().setPattern("卡通图案");
+
+    // 设置裤子信息
+    outfit.getPants().setStyle("直筒裤");
+    outfit.getPants().setLength("长裤");
+
+    // 展示整套穿搭信息
+    outfit.displayOutfitInfo();
+
+    return 0;
 }
