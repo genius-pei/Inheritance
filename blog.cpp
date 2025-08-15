@@ -125,32 +125,65 @@ using namespace std;
 //
 //    return 0;
 //}
-class Student;
+//class Student;
+//class Person
+//{
+//public:
+//	friend void Display(const Person& p, const Student& s);
+//protected:
+//	string _name="yiming"; // 姓名 
+//};
+//class Student : public Person
+//{
+//	friend void Display(const Person& p, const Student& s);
+//protected:
+//	int _stuNum=1117; // 学号 
+//};
+//void Display(const Person& p, const Student& s)
+//{
+//	cout << p._name << endl;
+//	cout << s._stuNum << endl;
+//}
+//int main()
+//{
+//	Person p;
+//    Student s;
+//	// 编译报错：error C2248: “Student::_stuNum”: ⽆法访问 protected 成员 
+//	// 解决⽅案：Display也变成Student 的友元即可 
+//	Display(p, s);
+//
+//	return 0;
+//}
+
+
+
 class Person
 {
 public:
-	friend void Display(const Person& p, const Student& s);
-protected:
-	string _name="yiming"; // 姓名 
+	string _name;
+	static int _count;
 };
+int Person::_count = 0;
 class Student : public Person
 {
-	friend void Display(const Person& p, const Student& s);
 protected:
-	int _stuNum=1117; // 学号 
+	int _stuNum;
 };
-void Display(const Person& p, const Student& s)
-{
-	cout << p._name << endl;
-	cout << s._stuNum << endl;
-}
 int main()
 {
 	Person p;
-    Student s;
-	// 编译报错：error C2248: “Student::_stuNum”: ⽆法访问 protected 成员 
-	// 解决⽅案：Display也变成Student 的友元即可 
-	Display(p, s);
-
+	Student s;
+	// 这⾥的运⾏结果可以看到⾮静态成员_name的地址是不⼀样的 
+	// 说明派⽣类继承下来了，⽗派⽣类对象各有⼀份 
+	cout << &p._name << endl;
+	cout << &s._name << endl;
+	// 这⾥的运⾏结果可以看到静态成员_count的地址是⼀样的 
+	// 说明派⽣类和基类共⽤同⼀份静态成员 
+	cout << &p._count << endl;
+	cout << &s._count << endl;
+	// 公有的情况下，⽗派⽣类指定类域都可以访问静态成员 
+	cout << Person::_count << endl;
+    cout << Student::_count << endl;
 	return 0;
 }
+
