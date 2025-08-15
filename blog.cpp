@@ -156,34 +156,102 @@ using namespace std;
 //}
 
 
+////静态成员继承
+//class Person
+//{
+//public:
+//	string _name;
+//	static int _count;
+//};
+//int Person::_count = 0;
+//class Student : public Person
+//{
+//protected:
+//	int _stuNum;
+//};
+//int main()
+//{
+//	Person p;
+//	Student s;
+//	// 这⾥的运⾏结果可以看到⾮静态成员_name的地址是不⼀样的 
+//	// 说明派⽣类继承下来了，⽗派⽣类对象各有⼀份 
+//	cout << &p._name << endl;
+//	cout << &s._name << endl;
+//	// 这⾥的运⾏结果可以看到静态成员_count的地址是⼀样的 
+//	// 说明派⽣类和基类共⽤同⼀份静态成员 
+//	cout << &p._count << endl;
+//	cout << &s._count << endl;
+//	// 公有的情况下，⽗派⽣类指定类域都可以访问静态成员 
+//	cout << Person::_count << endl;
+//    cout << Student::_count << endl;
+//	return 0;
+//}
+//
+
+////多继承
+//class Person
+//{
+//public:
+//	 string _name; // 姓名 
+//};
+//class Student : public Person
+//{
+//protected:
+//	int _num; //学号 
+//};
+//class Teacher : public Person
+//{
+//protected:
+//	int _id; // 职⼯编号 
+//};
+//class Assistant : public Student, public Teacher
+//{
+//protected:
+//	string _majorCourse; // 主修课程 
+//};
+//int main()
+//{
+//	// 编译报错：error C2385: 对“_name”的访问不明确 
+//	Assistant a;
+//	a._name = "peter";
+//	// 需要显⽰指定访问哪个基类的成员可以解决⼆义性问题，但是数据冗余问题⽆法解决 
+//	a.Student::_name = "xxx";
+//	a.Teacher::_name = "yyy";
+//	return 0;
+//}
+
+
+//虚继承
 
 class Person
 {
 public:
-	string _name;
-	static int _count;
+	string _name; // 姓名 
+	
 };
-int Person::_count = 0;
-class Student : public Person
+// 使⽤虚继承Person类 
+class Student : virtual public Person
 {
 protected:
-	int _stuNum;
+	int _num; //学号 
+};
+// 使⽤虚继承Person类 
+class Teacher : virtual public Person
+{
+protected:
+	int _id; // 职⼯编号 
+};
+// 教授助理 
+class Assistant : public Student, public Teacher
+{
+protected:
+	string _majorCourse; // 主修课程 
 };
 int main()
 {
-	Person p;
-	Student s;
-	// 这⾥的运⾏结果可以看到⾮静态成员_name的地址是不⼀样的 
-	// 说明派⽣类继承下来了，⽗派⽣类对象各有⼀份 
-	cout << &p._name << endl;
-	cout << &s._name << endl;
-	// 这⾥的运⾏结果可以看到静态成员_count的地址是⼀样的 
-	// 说明派⽣类和基类共⽤同⼀份静态成员 
-	cout << &p._count << endl;
-	cout << &s._count << endl;
-	// 公有的情况下，⽗派⽣类指定类域都可以访问静态成员 
-	cout << Person::_count << endl;
-    cout << Student::_count << endl;
+	// 使⽤虚继承，可以解决数据冗余和⼆义性 
+	Assistant a;
+	a._name = "peter";
+	cout << a._name << endl;
 	return 0;
 }
-
